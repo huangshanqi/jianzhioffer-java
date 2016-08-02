@@ -1,6 +1,6 @@
 package cn.evilcoder.tree;
 
-import cn.evilcoder.model.Node;
+import cn.evilcoder.model.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -16,7 +16,7 @@ public class TreeTravel {
      * 先序遍历
      * @param root
      */
-    public static List<Integer> travelPreOrder(Node root) {
+    public static List<Integer> travelPreOrder(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (null != root) {
             result.add(root.value);
@@ -31,7 +31,7 @@ public class TreeTravel {
      * @param root
      * @return
      */
-    public static List<Integer> travelInOrder(Node root) {
+    public static List<Integer> travelInOrder(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (null != root) {
             result.addAll(travelInOrder(root.left));
@@ -45,7 +45,7 @@ public class TreeTravel {
      * 后续遍历
      * @param root
      */
-    public static List<Integer> travelPostOrder(Node root) {
+    public static List<Integer> travelPostOrder(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (null != root) {
             result.addAll(travelInOrder(root.left));
@@ -60,15 +60,15 @@ public class TreeTravel {
      * @param root
      * @return
      */
-    public static List<Integer> travelInLevel(Node root) {
+    public static List<Integer> travelInLevel(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (null != root) {
-            Queue<Node> queue = new LinkedList<>();
+            Queue<TreeNode> queue = new LinkedList<>();
             queue.add(root);
             while (!queue.isEmpty()) {
                 int size = queue.size();
                 for (int i = 0; i< size; i++) {
-                    Node cur = queue.poll();
+                    TreeNode cur = queue.poll();
                     result.add(cur.value);
                     if (null != cur.left) {
                         queue.add(cur.left);
@@ -83,7 +83,7 @@ public class TreeTravel {
         return result;
     }
 
-    public static void travelInRecursion(Node root) {
+    public static void travelInRecursion(TreeNode root) {
 
     }
 }

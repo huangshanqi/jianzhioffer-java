@@ -3,13 +3,13 @@ package cn.evilcoder.model;
 /**
  * Created by huangshanqi on 2016/8/2.
  */
-public class Node {
+public class TreeNode {
 
     public int value;
-    public Node left;
-    public Node right;
+    public TreeNode left;
+    public TreeNode right;
 
-    public Node(int value) {
+    public TreeNode(int value) {
         this.value = value;
         this.left = null;
         this.right = null;
@@ -24,19 +24,19 @@ public class Node {
         this.value = value;
     }
 
-    public Node getLeft() {
+    public TreeNode getLeft() {
         return left;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(TreeNode left) {
         this.left = left;
     }
 
-    public Node getRight() {
+    public TreeNode getRight() {
         return right;
     }
 
-    public void setRight(Node right) {
+    public void setRight(TreeNode right) {
         this.right = right;
     }
 }

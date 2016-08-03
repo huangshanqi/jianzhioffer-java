@@ -29,4 +29,9 @@ public class LinkNode {
         LinkNode other = (LinkNode) obj;
         return other.value == this.value && this.next == other.next;
     }
+
+    @Override
+    public String toString() {
+        return value + "," + next;
+    }
 }

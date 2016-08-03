@@ -1,5 +1,6 @@
 package cn.evilcoder.util;
 
+import cn.evilcoder.model.LinkNode;
 import cn.evilcoder.model.TreeNode;
 
 import java.util.ArrayList;
@@ -31,19 +32,38 @@ public class RandomUtil {
         return result;
     }
 
-    public static TreeNode randomNode(int n) {
+    public static TreeNode randomTreeNode(int n) {
         List<Integer> numbers = randomList(n);
-        return buildNode(numbers, 0, numbers.size()-1);
+        return buildTreeNode(numbers, 0, numbers.size()-1);
     }
 
-    private static TreeNode buildNode(List<Integer> numbers, int begin, int end) {
+    public static LinkNode randomLinkNode(int n) {
+        List<Integer> numbers = randomList(n);
+        return buildLinkNode(numbers);
+    }
+
+    private static TreeNode buildTreeNode(List<Integer> numbers, int begin, int end) {
         TreeNode treeNode = null;
         if (begin <= end) {
             int mid = begin + (end - begin)/2;
             treeNode = new TreeNode(numbers.get(mid));
-            treeNode.left = buildNode(numbers, begin, mid -1);
-            treeNode.right = buildNode(numbers, mid + 1, end);
+            treeNode.left = buildTreeNode(numbers, begin, mid -1);
+            treeNode.right = buildTreeNode(numbers, mid + 1, end);
         }
         return treeNode;
+    }
+
+    private static LinkNode buildLinkNode(List<Integer> numbers) {
+        if (numbers == null || numbers.size() == 0) {
+            return null;
+        }
+        LinkNode root = new LinkNode(0);
+        LinkNode head = root;
+        for (int number : numbers) {
+            LinkNode next = new LinkNode(number);
+            root.next = next;
+            root = root.next;
+        }
+        return head.next;
     }
 }
